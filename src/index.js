@@ -7,4 +7,7 @@ import App from './App';
 import './assets/fonts/style.css';
 import './assets/icons/css/materialdesignicons.min.css';
 
-ReactDOM.render(<App />, document.getElementById('root'));
+ReactDOM.render(
+  <App />, 
+  document.getElementById('root')
+);

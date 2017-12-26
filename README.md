@@ -1,4 +1,4 @@
-# Drive sally front-end test project
+
 
 In the assets folder you will find the Adobe XD file and the screenshots (if you don't habe Adobe XD) for your assignment.
 
