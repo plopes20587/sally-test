@@ -10,8 +10,7 @@ import {
 
 export default class TableExampleControlled extends Component {
   state = {
-    selected: [1],
-    showCheckboxes: false,
+    selected: [0],
   };
 
   isSelected = (index) => {

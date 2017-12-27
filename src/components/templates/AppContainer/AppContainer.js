@@ -15,7 +15,16 @@ import vehicles from '../../../api/vehicles.api';
 
 rentals().then((data) => {
     let total = data.length;
-    document.getElementById('totalRentals').innerHTML = total + " " + "total";
+    let totalRentals = document.getElementById('totalRentals');
+    totalRentals.innerHTML = total + " " + "total";
+
+    let rentalStatus = data.find(e => { 
+      return e.rate;    
+    });
+
+    // rentalStatus.forEach(rental => {
+    //   console.log(rental);
+    // });
 })
 
 const AppContainer = () => (
