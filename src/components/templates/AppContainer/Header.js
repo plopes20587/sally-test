@@ -1,9 +1,9 @@
 import React from 'react';
 
 
-export default () => (
+export default (props) => (
   <div className ="Header">
     <h1>Rentals</h1>
-    <p id="totalRentals"></p>
+    <p>{props.totalRentals} total</p>
   </div>
 );
