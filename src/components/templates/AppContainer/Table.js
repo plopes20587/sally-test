@@ -39,35 +39,14 @@ export default class TableExampleControlled extends Component {
         </TableHeader>
         <TableBody displayRowCheckbox={false}>
           <TableRow selected={this.isSelected(0)}>
+            <TableRowColumn id="rentalStatus">Active</TableRowColumn>
+            <TableRowColumn>John Smith</TableRowColumn>
+            <TableRowColumn>Employed</TableRowColumn>
             <TableRowColumn>1</TableRowColumn>
             <TableRowColumn>John Smith</TableRowColumn>
             <TableRowColumn>Employed</TableRowColumn>
-          </TableRow>
-          <TableRow selected={this.isSelected(1)}>
-            <TableRowColumn>2</TableRowColumn>
-            <TableRowColumn>Randal White</TableRowColumn>
-            <TableRowColumn>Unemployed</TableRowColumn>
-          </TableRow>
-          <TableRow selected={this.isSelected(2)}>
-            <TableRowColumn>3</TableRowColumn>
-            <TableRowColumn>Stephanie Sanders</TableRowColumn>
-            <TableRowColumn>Employed</TableRowColumn>
-          </TableRow>
-          <TableRow selected={this.isSelected(3)}>
-            <TableRowColumn>4</TableRowColumn>
-            <TableRowColumn>Steve Brown</TableRowColumn>
-            <TableRowColumn>Employed</TableRowColumn>
-          </TableRow>
-          <TableRow selected={this.isSelected(4)}>
-            <TableRowColumn>4</TableRowColumn>
-            <TableRowColumn>Steve Brown</TableRowColumn>
-            <TableRowColumn>Employed</TableRowColumn>
-          </TableRow>
-          <TableRow selected={this.isSelected(5)}>
-            <TableRowColumn>4</TableRowColumn>
-            <TableRowColumn>Steve Brown</TableRowColumn>
-            <TableRowColumn>Employed</TableRowColumn>
-          </TableRow>
+            <TableRowColumn>Employed</TableRowColumn>            
+          </TableRow>      
         </TableBody>
       </Table>
     );
