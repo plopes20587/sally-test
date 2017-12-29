@@ -8,6 +8,8 @@ import {
   TableRowColumn,
 } from 'material-ui/Table';
 import rentals from '../../../api/rentals.api';
+import drivers from '../../../api/drivers.api';
+import vehicles from '../../../api/vehicles.api';
 
 
 export default class TableExampleControlled extends Component {
@@ -17,12 +19,13 @@ export default class TableExampleControlled extends Component {
   };
 
   componentDidMount() {
-    rentals()
-    .then((data) => {
-      this.setState({data});
-    });
-  }
-
+     Promise.all([rentals(), drivers(), vehicles()])
+     .then(({rentalsData, driversData, vehiclesData }) => { 
+      this.setState({ rentalsData, driversData, vehiclesData });
+      console.log(rentalsData);
+     });
+    }
+    
   isSelected = (index) => {
     return this.state.selected.indexOf(index) !== -1;
   };
@@ -33,9 +36,9 @@ export default class TableExampleControlled extends Component {
     });
   };
 
-  render() {
-    const data = this.state.data;
-    const tableRow = data.map((data) =>
+  render() {    
+    const entries = this.state.data;
+    const tableRow = entries.map((data) =>
       <TableRow selected={this.isSelected(0)}>
         <TableRowColumn key={data.status}>{data.status}</TableRowColumn>
         <TableRowColumn key={data.vehicle}>{data.vehicle}</TableRowColumn>
