@@ -23,7 +23,7 @@ export default class AppContainer extends Component {
   componentDidMount() {
     rentals()
     .then((data) => {
-      this.setState({data});
+      this.setState({ data });
     })
   }
 
