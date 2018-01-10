@@ -11,12 +11,17 @@ import styles from './styles';
 
 // Apis
 import rentals from '../../../api/rentals.api';
+import drivers from '../../../api/drivers.api';
+import vehicles from '../../../api/vehicles.api';
 
 export default class AppContainer extends Component {
   constructor(props) {
     super(props);
     this.state = {
       data: [],
+      rentalsData: [],
+      driversData: [],
+      vehiclesData: [],
     };
   }
   
@@ -24,18 +29,28 @@ export default class AppContainer extends Component {
     rentals()
     .then((data) => {
       this.setState({ data });
-    })
+    });
+
+    Promise.all([rentals(), drivers(), vehicles()])
+    .then(result => {
+      const [ rentalsData, driversData, vehiclesData ] = result;
+      this.setState({ rentalsData, driversData, vehiclesData });  
+    });
   }
 
   render() {
     const data = this.state.data;
+    const rentalsData = this.state.rentalsData.map((data) => {
+      return data.status;
+    });
 
     return (
       <div style={styles.container}>
       <div style={styles.content}>
-      <Header totalRentals={data.length}/>
-      <Filter />
-      <Table />
+        <Header totalRentals={data.length}/>
+        <Filter />       
+        <Table status={ rentalsData }
+        />
       </div>
     </div>
     );
