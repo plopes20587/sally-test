@@ -7,9 +7,6 @@ import {
   TableRow,
   TableRowColumn,
 } from 'material-ui/Table';
-// import rentals from '../../../api/rentals.api';
-// import drivers from '../../../api/drivers.api';
-// import vehicles from '../../../api/vehicles.api';
 
 export default class TableExampleControlled extends Component {
   constructor(props) {
@@ -18,14 +15,6 @@ export default class TableExampleControlled extends Component {
       selected: [0],
     }
   };
-
-  // componentDidMount() {
-  //   Promise.all([rentals(), drivers(), vehicles()])
-  //   .then(result => {
-  //     const [ rentalsData, driversData, vehiclesData ] = result;
-  //     this.setState({ rentalsData,driversData, vehiclesData });  
-  //   });
-  // };
    
   isSelected = (index) => {
     return this.state.selected.indexOf(index) !== -1;
@@ -52,11 +41,20 @@ export default class TableExampleControlled extends Component {
           </TableRow>
         </TableHeader>
         <TableBody displayRowCheckbox={false}>
-          <TableRow selected={this.isSelected(0)}>
-            <TableRowColumn>{this.props.status}</TableRowColumn>  
-            <TableRowColumn>{this.props.driver}</TableRowColumn>         
-          </TableRow>    
-        </TableBody>
+        { this.props.data.map(rental => {
+          return (
+            <TableRow key={rental.id} selected={this.isSelected(0)}>
+              <TableRowColumn>{rental.status}</TableRowColumn>
+              <TableRowColumn>{rental.vehicle}</TableRowColumn>
+              <TableRowColumn>{rental.driver}</TableRowColumn>
+              <TableRowColumn>{rental.email}</TableRowColumn>
+              <TableRowColumn>{rental.start_date}</TableRowColumn>
+              <TableRowColumn>{rental.end_date}</TableRowColumn>
+              <TableRowColumn>{rental.rate}</TableRowColumn>
+            </TableRow>
+          )
+        }) }
+      </TableBody>
         </Table>
     );
   }
