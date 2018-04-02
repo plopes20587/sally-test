@@ -51,8 +51,7 @@ export default class AppContainer extends Component {
 
           dataArr.push(rentalEntryObjCopy);
         });
-        this.setState({data: dataArr});
-        console.log(this.state.data)
+        this.setState({data: dataArr});    
     });
   }
 

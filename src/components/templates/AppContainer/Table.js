@@ -9,10 +9,10 @@ import {
 } from 'material-ui/Table';
 
 export default class TableExampleControlled extends Component {
-  constructor(props) {
-    super(props);
+  constructor() {
+    super();
     this.state = {
-      selected: [0],
+      selected: [],
     }
   };
    
@@ -43,7 +43,7 @@ export default class TableExampleControlled extends Component {
         <TableBody displayRowCheckbox={false}>
         { this.props.data.map(rental => {
           return (
-            <TableRow key={rental.id} selected={this.isSelected(0)}>
+            <TableRow key={rental.id} selected={this.isSelected()}>
               <TableRowColumn>{rental.status}</TableRowColumn>
               <TableRowColumn>{rental.vehicle}</TableRowColumn>
               <TableRowColumn>{rental.driver}</TableRowColumn>

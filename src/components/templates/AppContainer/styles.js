@@ -5,7 +5,7 @@ export default {
   },
   content: {
     width: '100%',
-    maxWidth: 800,
+    maxWidth: 1110,
     background: '#fff',
     boxShadow: 'rgba(0, 0, 0, 0.156863) 0px 3px 6px 0px',
     borderRadius: '6px',
