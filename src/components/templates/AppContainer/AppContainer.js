@@ -2,7 +2,7 @@
 import React, {Component} from 'react';
 import Table from './Table';
 import Header from './Header';
-import Filter from './Filter';
+import Search from './Search';
 
 // Component styles
 import styles from './styles';
@@ -37,17 +37,23 @@ export default class AppContainer extends Component {
           // match up rentalEntryObjCopy.driver to driversData.id, if a match, copy properties to appropriate rentalEntryObjCopy props
           driversData.forEach(driverItem => {
             if(rentalEntryObjCopy.driver === driverItem.id ) {
-              rentalEntryObjCopy.driver = (driverItem.first_name || driverItem.last_name) ? `${driverItem.first_name} ${driverItem.last_name}`.trim() : 'NA';
-              rentalEntryObjCopy.email = driverItem.email ? driverItem.email : 'NA';
+              rentalEntryObjCopy.driver = (driverItem.first_name || driverItem.last_name) ? `${driverItem.first_name} ${driverItem.last_name}`.trim() : '-';
+              rentalEntryObjCopy.email = driverItem.email ? driverItem.email : '-';
             }
           });
 
           // match up rentalEntryObjCopy.vehicle to vehicleItem.id, if a match, copy properties to appropriate rentalEntryObjCopy props
           vehiclesData.forEach(vehicleItem => {
             if(rentalEntryObjCopy.vehicle === vehicleItem.id ) {
-              rentalEntryObjCopy.vehicle = vehicleItem.brand ? vehicleItem.brand : 'NA';
+              rentalEntryObjCopy.vehicle = vehicleItem.brand ? vehicleItem.brand : '-';
             }
           });
+
+          rentalsData.forEach(rentalItem => {
+            if(rentalEntryObjCopy.end_date === null || rentalEntryObjCopy.end_date === '') {
+              rentalEntryObjCopy.end_date = rentalItem.end_date ? rentalItem.end_date : '-';
+            }
+          })
 
           dataArr.push(rentalEntryObjCopy);
         });
@@ -61,7 +67,7 @@ export default class AppContainer extends Component {
       <div style={styles.container}>
       <div style={styles.content}>
         <Header totalRentals={this.state.data.length}/>
-        <Filter />
+        <Search />
         <Table data={this.state.data}/>;
       </div>
     </div>

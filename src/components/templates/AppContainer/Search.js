@@ -1,8 +1,7 @@
 import React from 'react';
-
-
+ 
 export default () => (
-  <div className ="Filter">
+  <div className ="search" id="search">
     <input type="text" />
   </div>
 );
